@@ -4,28 +4,28 @@ import { Star, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 export default function ServiceSection() {
   const companies = [
     {
-      logo: "/placeholder.svg?height=50&width=150",
+      logo: "https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI",
       name: "AARDY",
       website: "aardy.com",
       rating: 4.9,
       reviews: 28951,
     },
     {
-      logo: "/placeholder.svg?height=50&width=150",
+      logo: "https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI",
       name: "TripInsure101",
       website: "tripinsure101.com",
       rating: 4.9,
       reviews: 3189,
     },
     {
-      logo: "/placeholder.svg?height=50&width=150",
+      logo: "https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI",
       name: "MexiPass International Insurance",
       website: "www.mexipass.com",
       rating: 4.9,
       reviews: 1718,
     },
     {
-      logo: "/placeholder.svg?height=50&width=150",
+      logo: "https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI",
       name: "Travel Defenders",
       website: "traveldefenders.com",
       rating: 4.9,
