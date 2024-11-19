@@ -34,9 +34,9 @@ export default function ServiceSection() {
   ]
 
   return (
-    <div className="w-full px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-12">
+    <div className="w-full px-4 sm:px-20 py-[3rem] sm:py-8 space-y-8 sm:space-y-12">
       {/* Best in Travel Insurance Section */}
-      <div className="space-y-6">
+      <div className="space-y-6 mt-5">
         <div className="flex justify-between items-center">
           <h2 className="text-xl sm:text-2xl text-white font-bold">Best in Crypto Investment Brokers</h2>
          </div>

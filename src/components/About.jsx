@@ -81,10 +81,10 @@ export default function About() {
       {/* Categories Section */}
       <div className="px-6 py-8">
         <h2 className="text-2xl text-center font-bold mb-6">What are you looking for?</h2>
-        <div className=" relative">
+        <div className="relative flex justify-center">
           <div 
             ref={sliderRef}
-            className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide"
+            className="flex items-center justify-center gap-4 overflow-x-auto pb-4 scrollbar-hide max-w-6xl"
           >
             {categories.map((category, index) => (
               <div
@@ -120,7 +120,7 @@ export default function About() {
       {/* Hero Section */}
       <div className="bg-[#FFF4E7] px-6 py-12">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 space-y-[2rem]">
             <h1 className="text-4xl font-bold">Help millions make the right choice</h1>
             <p className="text-gray-600">
               Share your experience on Trustpilot, where real reviews make a difference.
