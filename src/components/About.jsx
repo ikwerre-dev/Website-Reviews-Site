@@ -80,8 +80,8 @@ export default function About() {
 
       {/* Categories Section */}
       <div className="px-6 py-8">
-        <h2 className="text-2xl font-bold mb-6">What are you looking for?</h2>
-        <div className="relative">
+        <h2 className="text-2xl text-center font-bold mb-6">What are you looking for?</h2>
+        <div className=" relative">
           <div 
             ref={sliderRef}
             className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide"
