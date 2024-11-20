@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function Banner() {
     return (
@@ -13,13 +14,13 @@ function Banner() {
                         <h6 className="text-black text-md md:text-2xl text-center ">Keep everything you copy and quickly access your macOS clipboard history whenever you need it.</h6>
                     </div>
                     <div className="md:pt-5">
-                        <button className="flex flex-row gap-5 rounded-xl bg-black text-[#EAE8FF] px-5 py-3 "><Search /> Search Now</button>
+                        <Link to={'/search'} className="flex flex-row gap-5 rounded-xl bg-black text-[#EAE8FF] px-5 py-3 "><Search /> Search Now</Link>
                     </div>
                 </div>
                 <div className="absolute inset-x-0 -bottom-[5rem] h-24 ">
-                    <div className="absolute left-0 bottom-0 w-[20rem] h-[20rem] bg-green-500 rounded-full transform -translate-x-1/2 translate-y-1/2 opacity-90"></div>
-                    <div className="absolute left-1/2 bottom-0 w-[20rem] h-[20rem] bg-red-500 rounded-full transform -translate-x-1/2 translate-y-1/2 opacity-90"></div>
-                    <div className="absolute right-0 bottom-0 w-[20rem] h-[20rem] bg-blue-500 rounded-full transform translate-x-1/2 translate-y-1/2 opacity-90"></div>
+                    <div className="absolute left-0 bottom-0 w-[20rem] h-[20rem]  md:w-[50rem] md:h-[35rem] md:-bottom-[8rem] bg-green-500 rounded-full transform -translate-x-1/2 translate-y-1/2 opacity-90"></div>
+                    <div className="absolute left-1/2 bottom-0 w-[20rem] h-[20rem]  md:w-[50rem] md:h-[35rem] md:-bottom-[8rem] bg-red-500 rounded-full transform -translate-x-1/2 translate-y-1/2 opacity-90"></div>
+                    <div className="absolute right-0 bottom-0 w-[20rem] h-[20rem]  md:w-[50rem] md:h-[35rem] md:-bottom-[8rem] bg-blue-500 rounded-full transform translate-x-1/2 translate-y-1/2 opacity-90"></div>
                 </div>
             </div>
         </div>
