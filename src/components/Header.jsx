@@ -1,13 +1,13 @@
 import { MenuIcon, SearchCheckIcon, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
     const Menu = [
-        { "link": "#", "title": "Home" },
-        { "link": "#", "title": "About" },
-        { "link": "#", "title": "Services" },
-        { "link": "#", "title": "Contact" },
-    ]
+        { "link": "/#", "title": "Home" },
+        { "link": "/#about", "title": "About" },
+        { "link": "/#services", "title": "Services" },
+     ]
     const [isMenuOpen, SetisMenuOpen] = useState(false)
     const toggleMenu = () => {
         isMenuOpen ? SetisMenuOpen(false) : SetisMenuOpen(true)
@@ -28,7 +28,8 @@ function Header() {
                 </div>
 
                 <div className="flex flex-row justify-end">
-                    <button className="hidden md:flex  bg-[#EAE8FF] px-5 py-2 justify-center items-center rounded-[5rem]  text-black">Search</button>
+                     <Link to={'/search'} className="hidden md:flex  bg-[#EAE8FF] text-center justify-center items-center flex-col font-bold px-5 py-2  rounded-[5rem]  text-black">Search</Link>
+                  
                     <button onClick={toggleMenu} className="flex md:hidden  bg-[#EAE8FF] px-3 py-3  rounded-[5rem]  text-black">{!isMenuOpen ? <MenuIcon /> : <X />}</button>
                 </div>
 
@@ -42,7 +43,7 @@ function Header() {
                             ))
                         }
                         <div className="flex w-full px-5 text-center flex-col">
-                            <button className="flex w-full bg-[#EAE8FF] text-center justify-center items-center flex-col font-bold px-5 py-2  rounded-[5rem]  text-black">Search</button>
+                            <Link to={'/search'} className="flex w-full bg-[#EAE8FF] text-center justify-center items-center flex-col font-bold px-5 py-2  rounded-[5rem]  text-black">Search</Link>
                         </div>
                     </div>
 

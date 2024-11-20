@@ -1,23 +1,18 @@
-import { useState } from 'react'
-import Header from './components/Header'
-import Banner from './components/Banner'
-import Services from './components/Services'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
-import About from './components/About'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Search from './Search';
 
 function App() {
-
   return (
-    <div className='bg-[#000] min-h-screen'>
-      <Header />
-      <Banner />
-      <About />
-      <Services />
-      <CTA />
-      <Footer />
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="*" element={<p>Not FOund</p>} />
+
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

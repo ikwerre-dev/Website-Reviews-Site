@@ -66,7 +66,7 @@ export default function About() {
   }
 
   return (
-    <div className="w-full bg-[#EAE8FF]">
+    <div className="w-full bg-[#EAE8FF]" id='about'>
       {/* Top Navigation */}
       <div className="flex justify-end p-4 border-b">
         <div className="flex items-center gap-2">
