@@ -16,9 +16,8 @@ function Header() {
         <div className="py-[2rem] md:py-[3rem] px-5 md:px-[10rem]">
             <div className="bg-[#000] border-[.1rem] border-[#EAE8FF] flex justify-between md:grid  md:grid-cols-3 rounded-[2rem] w-full p-[1rem]">
                 <div className=" flex flex-row items-center gap-3 text-[#EAE8FF] p-[.5rem] ">
-                    <SearchCheckIcon />
-                    <h4 className="font-bold text-md md:text-xl font-sans">Review Master</h4>
-                </div>
+                     <img src="https://cdn.trustpilot.net/brand-assets/4.3.0/logo-white.svg" className="w-[7rem] object-contain" alt="" />
+                 </div>
                 <div className="hidden md:flex gap-5 items-center justify-center text-[#EAE8FF]">
                     {
                         Menu.map((data, index) => (
