@@ -26,25 +26,40 @@ function Search() {
   }, [])
 
   const handleSearch = async (searchDomain = domain) => {
-    if (!searchDomain) return
+    // Regular expression to check if the domain is valid (excluding http://, https://, and www.)
+    const domainRegex = /^(?!www\.)(?:[a-z0-9-]+\.)+[a-z]{2,6}$/i;
+    // Clean the domain by removing http://, https://, and www.
+    const cleanedDomain = searchDomain.replace(/^(https?:\/\/)?(www\.)?/i, '');
+
+    // Update the state with the cleaned domain
+    setDomain(cleanedDomain);
+
+    // Check if the domain is valid
+    if (!cleanedDomain || !domainRegex.test(cleanedDomain)) {
+      setError('Please enter a valid domain.');
+      return;
+    }
+
 
     setLoading(true)
     setError(null)
 
     try {
-      const response = await axios.get(`http://localhost/reviews_site/index.php?q=${searchDomain}`)
+      const response = await axios.get(`http://192.168.1.115/reviews_site/index.php?q=${cleanedDomain}`)
+      console.log(response.data)
       setReviews(response.data.responses)
       setAverageRating(response.data.averagerating)
       setDomainRegDate(response.data.domain_reg_date)
       setTimeAgoFromReg(response.data.timeagofrfomreg)
       setCurrentPage(1)
-      setShareLink(`${window.location.origin}${window.location.pathname}?link=${searchDomain}`)
+      setShareLink(`${window.location.origin}${window.location.pathname}?link=${cleanedDomain}`)
     } catch (err) {
       setError('Failed to fetch reviews. Please try again later.')
     } finally {
       setLoading(false)
     }
   }
+
 
   const indexOfLastReview = currentPage * reviewsPerPage
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage
@@ -68,8 +83,8 @@ function Search() {
       <div className="py-8 bg-emerald-100 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-4xl font-bold mb-2">{domain || 'Company Name'}</h1>
-            <p className="text-gray-600 mb-4">Reviews {reviews.length}</p>
+            <h1 className="text-4xl font-bold mb-2">{domain || 'Domain Name'}</h1>
+            <p className="text-gray-600 mb-4">Fetched {reviews.length} Most Recent Reviews</p>
             <div className="flex items-center mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
                 <svg
@@ -121,21 +136,24 @@ function Search() {
                     <p className="text-gray-800 font-medium">{review.response}</p>
                     <div className="flex items-center mt-2">
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <svg
-                          key={i}
-                          className={`h-5 w-5 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 15l-3.546 2.029 1.356-4.227L3 8.83l4.378-.362L10 4l2.622 4.468 4.378.362-3.81 4.972 1.356 4.227L10 15z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <>
+                          <svg
+                            key={i}
+                            className={`h-5 w-5 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 15l-3.546 2.029 1.356-4.227L3 8.83l4.378-.362L10 4l2.622 4.468 4.378.362-3.81 4.972 1.356 4.227L10 15z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          </>
                       ))}
+                      <p>{review.rating}</p>
                     </div>
                     <p className="mt-2 text-gray-600">Reviewed by: {review.email} on {review.date}</p>
                   </div>
@@ -153,9 +171,8 @@ function Search() {
                   <button
                     key={index}
                     onClick={() => paginate(index + 1)}
-                    className={`mx-1 px-3 py-1 rounded ${
-                      currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
-                    }`}
+                    className={`mx-1 px-3 py-1 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+                      }`}
                   >
                     {index + 1}
                   </button>
@@ -197,7 +214,7 @@ function Search() {
                 <h3 className="text-lg font-semibold mb-2">Share this page</h3>
                 <div className="flex items-center">
                   <input
-                    type="text"
+                    type="search"
                     value={shareLink}
                     readOnly
                     className="flex-grow mr-2 px-2 py-1 border rounded"

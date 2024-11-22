@@ -10,6 +10,7 @@ import {
   Laptop,
   Dumbbell,
 } from "lucide-react"
+import { Link } from 'react-router-dom'
 
 export default function About() {
   const categories = [
@@ -71,9 +72,9 @@ export default function About() {
       <div className="flex justify-end p-4 border-b">
         <div className="flex items-center gap-2">
           <span className="text-sm">Bought something recently?</span>
-          <a href="#" className="text-blue-600 text-sm hover:underline">
+          <Link to={'/search'}className="text-blue-600 text-sm hover:underline">
             Write a review
-          </a>
+          </Link>
           <ChevronRight className="w-4 h-4" />
         </div>
       </div>
@@ -99,20 +100,20 @@ export default function About() {
             ))}
           </div>
           {showLeftArrow && (
-            <button 
+            <Link to={'/search'}
               className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2"
               onClick={() => scroll('left')}
             >
               <ChevronLeft className="w-4 h-4" />
-            </button>
+            </Link>
           )}
           {showRightArrow && (
-            <button 
+            <Link to={'/search'}
               className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2"
               onClick={() => scroll('right')}
             >
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </Link>
           )}
         </div>
       </div>
@@ -126,31 +127,32 @@ export default function About() {
               Share your experience on Trustpilot, where real reviews make a difference.
             </p>
             <div className="space-y-4">
-              <button className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded">
+              <Link to={'/search'} className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded">
                 Search
-              </button>
+              </Link>
+              
               <div className="flex gap-2">
-                <button className="p-2 border rounded-full hover:bg-gray-50">
+                <Link to={'/search'} className="p-2 border rounded-full hover:bg-gray-50">
                   <img
                     src="https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI"
                     alt="Google"
                     className="w-6 h-6"
                   />
-                </button>
-                <button className="p-2 border rounded-full hover:bg-gray-50">
+                </Link>
+                <Link to={'/search'} className="p-2 border rounded-full hover:bg-gray-50">
                   <img
                     src="https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI"
                     alt="Facebook"
                     className="w-6 h-6"
                   />
-                </button>
-                <button className="p-2 border rounded-full hover:bg-gray-50">
+                </Link>
+                <Link to={'/search'} className="p-2 border rounded-full hover:bg-gray-50">
                   <img
                     src="https://fastly.picsum.photos/id/60/1920/1200.jpg?hmac=fAMNjl4E_sG_WNUjdU39Kald5QAHQMh-_-TsIbbeDNI"
                     alt="Apple"
                     className="w-6 h-6"
                   />
-                </button>
+                </Link>
               </div>
             </div>
           </div>

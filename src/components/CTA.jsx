@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Button = ({ children, className, ...props }) => (
-  <button
+  <Link to={'/search'} 
     className={`px-4 py-2 rounded-md font-semibold transition-colors ${className}`}
     {...props}
   >
     {children}
-  </button>
+  </Link>
 )
 
 const Card = ({ children, className, ...props }) => (

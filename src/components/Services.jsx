@@ -1,5 +1,6 @@
 import React from 'react'
 import { Star, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function ServiceSection() {
   const companies = [
@@ -38,7 +39,7 @@ export default function ServiceSection() {
       {/* Best in Travel Insurance Section */}
       <div className="space-y-6 mt-5">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl sm:text-2xl text-white font-bold">Best in Crypto Investment Brokers</h2>
+          <h2 className="text-xl sm:text-2xl text-white font-bold">Recent Searches</h2>
          </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -75,13 +76,13 @@ export default function ServiceSection() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 sm:gap-8">
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">We're Trustpilot</h2>
-            <p className="text-base sm:text-lg">
+            <p className="text-base sm:text-lg pb-5">
               We're a review platform that's open to everyone. Our vision is to become a universal 
               symbol of trust — by empowering people to shop with confidence, and helping companies improve.
             </p>
-            <button className="bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors">
+            <Link to={'/search'}  className="bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:bg-gray-800 transition-colors">
               What we do
-            </button>
+            </Link>
           </div>
           
           <div className="bg-[#1C3337] text-white p-4 sm:p-6 rounded-xl">
@@ -90,9 +91,9 @@ export default function ServiceSection() {
               Find out which actions we've taken to protect you and promote trust on our platform this year.
             </p>
             <div className="flex justify-between items-center">
-              <button className="border border-white px-4 sm:px-6 py-2 rounded-full hover:bg-white hover:text-black transition-colors text-sm sm:text-base">
+              <Link to={'/search'}  className="border border-white px-4 sm:px-6 py-2 rounded-full hover:bg-white hover:text-black transition-colors text-sm sm:text-base">
                 Take a look
-              </button>
+              </Link>
               <div className="flex gap-1">
                 {['2', '0', '2', '4'].map((num, i) => (
                   <div 
@@ -115,12 +116,12 @@ export default function ServiceSection() {
       <div className="flex justify-between items-center">
         <h2 className="text-xl sm:text-2xl font-bold">Recent reviews</h2>
         <div className="flex gap-2">
-          <button className="p-1 sm:p-2 rounded-full hover:bg-gray-100">
+          <Link to={'/search'}  className="p-1 sm:p-2 rounded-full hover:bg-gray-100">
             <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button className="p-1 sm:p-2 rounded-full hover:bg-gray-100">
+          </Link>
+          <Link to={'/search'}  className="p-1 sm:p-2 rounded-full hover:bg-gray-100">
             <ChevronRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
