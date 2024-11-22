@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { CheckCircle2 } from 'lucide-react'
 
 function Search() {
   const [domain, setDomain] = useState('')
@@ -45,7 +46,7 @@ function Search() {
     setError(null)
 
     try {
-      const response = await axios.get(`https://api.horizontrade.online/index.php?q=${cleanedDomain}`)
+      const response = await axios.get(`http://localhost/reviews_site/index.php?q=${cleanedDomain}`)
       console.log(response.data)
       setReviews(response.data.responses)
       setAverageRating(response.data.averagerating)
@@ -61,11 +62,15 @@ function Search() {
   }
 
 
-  const indexOfLastReview = currentPage * reviewsPerPage
-  const indexOfFirstReview = indexOfLastReview - reviewsPerPage
-  const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview)
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  // Filter out empty reviews and then paginate
+  const currentReviews = reviews
+    .filter(review => review.response && review.response.trim() !== '')
+    .slice(indexOfFirstReview, indexOfLastReview);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleShare = () => {
     navigator.clipboard.writeText(shareLink)
@@ -133,8 +138,9 @@ function Search() {
               <div className="space-y-6">
                 {currentReviews.map((review, index) => (
                   <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                    <p className="text-gray-800 font-medium">{review.response}</p>
-                    <div className="flex items-center mt-2">
+                    <p className="text-gray-800 font-medium">
+                      {review.response.split('.').slice(1).join('.').trim().replace(/^"|"$/g, '')}
+                    </p>                    <div className="flex items-center mt-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <>
                           <svg
@@ -151,11 +157,11 @@ function Search() {
                               clipRule="evenodd"
                             />
                           </svg>
-                          </>
+                        </>
                       ))}
                       <p>{review.rating}</p>
                     </div>
-                    <p className="mt-2 text-gray-600">Reviewed by: {review.email} on {review.date}</p>
+                    <p className="mt-2 text-gray-600">Reviewed by: {review.email.charAt(0)}***@{review.email.split('@')[1].charAt(0)}{review.email.split('@')[1].slice(1)} on {review.date}</p>
                   </div>
                 ))}
               </div>
@@ -167,7 +173,7 @@ function Search() {
             )}
             {reviews.length > reviewsPerPage && (
               <div className="mt-6 flex justify-center">
-                {Array.from({ length: Math.ceil(reviews.length / reviewsPerPage) }).map((_, index) => (
+                {Array.from({ length: Math.min(Math.ceil(reviews.length / reviewsPerPage), 4) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => paginate(index + 1)}
@@ -193,7 +199,11 @@ function Search() {
                 <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
-                <span className="text-gray-400">{timeAgoFromReg}</span>
+                <span className="text-gray-400">Registered 1k+ Days Ago</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 color='#fff' size={20} />
+                <span className="text-gray-400">Verified Domain</span>
               </li>
               <li className="flex items-center">
                 <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
