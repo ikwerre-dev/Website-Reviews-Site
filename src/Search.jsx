@@ -46,7 +46,7 @@ function Search() {
     setError(null)
 
     try {
-      const response = await axios.get(`http://localhost/reviews_site/index.php?q=${cleanedDomain}`)
+      const response = await axios.get(`https://api.horizontrade.online/index.php?q=${cleanedDomain}`)
       console.log(response.data)
       setReviews(response.data.responses)
       setAverageRating(response.data.averagerating)
